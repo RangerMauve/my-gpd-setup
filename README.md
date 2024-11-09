@@ -114,6 +114,8 @@ yay -S \
 
 Once I install `gearlever` I usually install the latest release of [Agregore](https://github.com/AgregoreWeb/agregore-browser/releases) via my package manager.
 
+I've also got my setttings for VSCodium in `vscodium-settings.json`. I use the `Purple Void` theme.
+
 ## LLMs
 
 I use [ollama](https://ollama.com) for local LLMs so I usually install it from their install script:
