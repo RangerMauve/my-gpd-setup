@@ -69,6 +69,19 @@ systemctl --user enable kanshi
 systemctl --user start kanshi
 ```
 
+## MDNS
+
+For some reason Arch Linux people don't value `.local` domains being resolvable out of the box so it's always a massive pain figuring out what to do.
+Luckily for EndevourOS it just requires some minor tinkering.
+
+```bash
+yay -S nss-mdns avahi
+sudo systemctl enable avahi-dnsconfd.service 
+sudo systemctl start avahi-dnsconfd.service 
+sudo firewall-cmd --permanent --add-service=mdns
+sudo firewall-cmd --reload
+```
+
 ## Applications
 
 Here's a bunch of stuff I regularly use via the standard package manager.
@@ -87,8 +100,12 @@ yay -S \
 
 Once I install `gearlever` I usually install the latest release of [Agregore](https://github.com/AgregoreWeb/agregore-browser/releases) via my package manager.
 
+## LLMs
+
 I use [ollama](https://ollama.com) for local LLMs so I usually install it from their install script:
 
 ```bash
 curl -fsSL https://ollama.com/install.sh | sh
 ```
+
+I sometimes use this in tandem with the [continue.dev](https://www.continue.dev/) extension in VSCodium as it's an offline and open source alternative to copilot.
