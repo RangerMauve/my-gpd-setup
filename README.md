@@ -5,7 +5,9 @@ Here's my [GPD Win 4](https://www.gpd.hk/gpdwin4) setup with Arch linux.
 
 I use [EndevourOS](https://endeavouros.com/) which is an [Arch](https://archlinux.org/) based distribution of Linux.
 
-When installing from the live USB, 
+When installing from the live USB, I selected the option that lacks a GUI so I could build up an env from scratch.
+
+I also made sure to enable LUKS disk encryption.
 
 ## Desktop
 
@@ -13,6 +15,7 @@ I mostly followed this guide from [niri](https://github.com/YaLTeR/niri/wiki/Exa
 
 ```bash
 yay -S \
+  brillo \
   fuzzel \
   kanshi \
   kitty \
@@ -20,12 +23,20 @@ yay -S \
   nerd-dictation-git \
   niri \
   swaybg \
+  ttf-fira-code \
+  ttf-font-awesome \
   waybar \
   wl-clipboard \
   xdg-desktop-portal-gtk \
   xdg-desktop-portal-gnome \
   xwayland-satellite \
   ydotool
+```
+
+This lets us adjust screen brightness by scrolling on item in waybar.
+
+```bash
+sudo usermod -a -G video $LOGNAME
 ```
 
 ```bash
@@ -52,6 +63,9 @@ cp -R ./.config/. ~/.config/
 
 # shell scripts I use elsewhere
 cp -R ./.local/. ~/.local/
+
+# I use nano for terminal editing
+wget https://raw.githubusercontent.com/RangerMauve/nanorc/refs/heads/master/.nanorc
 ```
 
 ## Services
@@ -90,7 +104,7 @@ Here's a bunch of stuff I regularly use via the standard package manager.
 yay -S \
   betterbird-bin \
   gapless \
-  gearleverl \
+  gearlever \
   go \
   keysmith \
   nvm \
@@ -108,4 +122,18 @@ I use [ollama](https://ollama.com) for local LLMs so I usually install it from t
 curl -fsSL https://ollama.com/install.sh | sh
 ```
 
+For GPU acceleration I have AMD ROCm libraries installed:
+
+```bash
+yay -S rocm-hip-sdk rocm-opencl-sdk
+```
+
+I also found I needed to edit `/etc/systemd/system/ollama.service` to add an extra environment variable to force a ROCm version.
+
+```bash
+Environment="HSA_OVERRIDE_GFX_VERSION=11.0.0"
+```
+
 I sometimes use this in tandem with the [continue.dev](https://www.continue.dev/) extension in VSCodium as it's an offline and open source alternative to copilot.
+
+Usually I use [Hermes3:8b](https://nousresearch.com/hermes3/) since it's decent all around.
