@@ -1,0 +1,14 @@
+[Unit]
+Description=define output profiles that are automatically enabled and disabled on hotplug.
+Documentation=https://git.sr.ht/~emersion/kanshi
+PartOf=graphical-session.target
+After=graphical-session.target
+Requisite=graphical-session.target
+
+[Service]
+ExecStart=/usr/bin/kanshi
+ExecReload=kill -SIGUSR2 $MAINPID
+Restart=on-failure
+
+[Install]
+WantedBy=graphical-session.target
