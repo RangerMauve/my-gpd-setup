@@ -140,3 +140,11 @@ Environment="HSA_OVERRIDE_GFX_VERSION=11.0.0"
 I sometimes use this in tandem with the [continue.dev](https://www.continue.dev/) extension in VSCodium as it's an offline and open source alternative to copilot.
 
 Usually I use [Hermes3:8b](https://nousresearch.com/hermes3/) since it's decent all around.
+
+# Music
+
+I use gapless for music playback, and generally I keep an offline copy of my SoundCloud likes using this script:
+
+```bash
+ scdl -l https://soundcloud.com/user890794315 -f -c --download-archive progress 
+```
