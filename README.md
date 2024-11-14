@@ -27,6 +27,7 @@ yay -S \
   ttf-font-awesome \
   waybar \
   wl-clipboard \
+  wofi-emoji \
   xdg-desktop-portal-gtk \
   xdg-desktop-portal-gnome \
   xwayland-satellite \
