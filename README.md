@@ -16,6 +16,7 @@ I mostly followed this guide from [niri](https://github.com/YaLTeR/niri/wiki/Exa
 ```bash
 yay -S \
   brillo \
+  dotool \
   fuzzel \
   kanshi \
   kitty \
@@ -147,4 +148,29 @@ I use gapless for music playback, and generally I keep an offline copy of my Sou
 
 ```bash
  scdl -l https://soundcloud.com/user890794315 -f -c --download-archive progress 
+```
+
+## Voice Control
+
+I use [nerd-dictation](https://github.com/ideasman42/nerd-dictation) for speech to text so I can type messages and sometimes even do programming without needing to type.
+
+First I set up my customizations:
+
+```bash
+mkdir ~/.config/nerd-dictation
+z ~/.config/nerd-dictation
+git clone git@github.com:RangerMauve/mauve-dictation.git .
+```
+
+Then I download and extract the recognition model.
+I use the [vosk-model-small-en-us](https://alphacephei.com/vosk/models/vosk-model-small-en-us-0.15.zip) model to conserve battery, and it ends up being good enough.
+After downloading the model I extract it to the nerd-dictation folder.
+
+After that you can toggle nerd-dictation with either `SUPER+ENTER` or with the `toggle-nerd.sh` command.
+
+If you're having issues being able to "create a virtual keyboard device", you'll need to add yourself to the `input` group and reboot.
+
+```bash
+sudo usermod -a -G input $USER
+reboot
 ```
